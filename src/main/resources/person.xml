@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:neo4j="http://www.springframework.org/schema/data/neo4j"
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/data/neo4j
+      http://www.springframework.org/schema/data/neo4j/spring-neo4j.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<context:annotation-config/>
+   <context:component-scan base-package="com.example.service" />
+
+   <!-- <neo4j:config  storeDirectory="C:\Users\Dell\Documents\Neo4j\default.graphdb" 
+      base-package="com.example.domain"/> -->
+
+   <neo4j:repositories base-package="com.example.dao"/>
+
+   <tx:annotation-driven />
+   <neo4j:config graphDatabaseService="graphDatabaseService"/>
+   <bean id="graphDatabaseService" 
+			class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase">
+		  <constructor-arg index="0" value="http://ec2-54-86-197-61.compute-1.amazonaws.com:7474/db/data" />
+		  <constructor-arg index="1" value="neo4j" />
+		  <constructor-arg index="2" value="training" />
+	</bean>
+	
+</beans>
