@@ -32,7 +32,8 @@ public class Neo4JJavaAPIExample
     	
     	//GraphDatabaseFactory neo4jFactory=new GraphDatabaseFactory();
         //GraphDatabaseService graphDB=neo4jFactory.newEmbeddedDatabase(GraphDB_Path);
-		String SERVER_ROOT_URI ="http://ec2-54-86-197-61.compute-1.amazonaws.com:7474";
+//		String SERVER_ROOT_URI ="http://ec2-54-86-197-61.compute-1.amazonaws.com:7474";
+		String SERVER_ROOT_URI ="http://localhost:7474";
 		
 		RestGraphDatabase graphDB=new RestGraphDatabase(SERVER_ROOT_URI+"/db/data/","neo4j", "training");
 		try(Transaction tx=graphDB.beginTx()){
